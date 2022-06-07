@@ -28,7 +28,9 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
-  login(loginData: User): Observable<any> {
+  // login(loginData: User): Observable<{ accessToken: string }> {
+  login(loginData: User): Observable<{ accessToken: string } | User | User[] | null> {
+  // login(loginData: User): Observable<any> {
     return this.http
       .post<{ accessToken: string }>(this.loginUrl, {
         email: loginData.email,

@@ -13,6 +13,7 @@ export class AuthService {
   loginUrl = `${this.config.apiUrl}login`;
   logoutUrl = `${this.config.apiUrl}logout`;
   storageName = 'currentUser';
+  // currentUserSubject: BehaviorSubject<User | null> = new BehaviorSubject(null);
   currentUserSubject: BehaviorSubject<User | null> =
     new BehaviorSubject<User | null>(null);
   lastToken: string | null = null;
@@ -29,8 +30,8 @@ export class AuthService {
   }
 
   // login(loginData: User): Observable<{ accessToken: string }> {
-  login(loginData: User): Observable<{ accessToken: string } | User | User[] | null> {
   // login(loginData: User): Observable<any> {
+  login(loginData: User): Observable<{ accessToken: string } | User | User[] | null> {
     return this.http
       .post<{ accessToken: string }>(this.loginUrl, {
         email: loginData.email,

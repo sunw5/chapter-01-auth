@@ -52,9 +52,10 @@ export class AuthService {
             localStorage.removeItem(this.storageName);
             this.currentUserSubject.next(null);
           } else {
-            (user as { [key: string]: any })[0].token = this.lastToken;
-            localStorage.setItem(this.storageName, JSON.stringify(user as { [key: string]: any }[0]));
-            this.currentUserSubject.next(user as { [key: string]: any }[0]);
+            localStorage.setItem(this.storageName, JSON.stringify(user));
+            if (Array.isArray(user))  user = user[0];
+            user.token = this.lastToken || undefined;
+            this.currentUserSubject.next(user);
           }
         })
       );

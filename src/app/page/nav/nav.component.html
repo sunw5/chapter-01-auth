@@ -31,20 +31,23 @@
         >{{ link.label }}</a>
       </li>
     </ul>
-    <!-- <ul class="my-2 my-lg-0 right-buttons">
+    <!-- If the user exist -->
+    <ul class="my-2 my-lg-0 right-buttons">
       <li *ngIf="user" class="mr-1">
         <span>Hi {{ user?.first_name }}!</span>
       </li>
+      <!-- if the user does not exist then a button to log in -->
       <li *ngIf="!user">
         <a routerLink="/login" class="btn btn-success">
           <i class="fa fa-sign-in"></i>
         </a>
       </li>
+      <!-- if the user exist then a button to log out -->
       <li *ngIf="user">
         <button (click)="onLogout()" class="btn btn-secondary">
           <i class="fa fa-sign-out"></i>
         </button>
       </li>
-    </ul> -->
+    </ul>
   </div>
 </nav>

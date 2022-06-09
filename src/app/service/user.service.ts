@@ -24,6 +24,10 @@ export class UserService {
     return this.http.get<User | User[]>(url);
   }
 
+  getAll(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.config.apiUrl}${this.entity}`);
+  }
+
   query(querString: string): Observable<User | User[]> {
     const url = `${this.config.apiUrl}${this.entity}?${querString}`;
     return this.http.get<User | User[]>(url);
